@@ -1,0 +1,29 @@
+[{
+  "from": "",
+  "method": "GET",
+  "to": "_list/universities/choose_university",
+  "query": {
+    "group": "true",
+    "startkey": [":curriculum"],
+    "endkey": [":curriculum", {}]
+  }
+}, {
+  "from": "",
+  "method": "POST",
+  "to":  "../../"
+}, {
+  "from": ":agreement",
+  "to":  "../../:agreement"
+}, {
+  "from": "universities/:university",
+  "method": "GET",
+  "to": "_list/courses/choose_course",
+  "query": {
+    "group": "true",
+    "startkey": [":university"],
+    "endkey": [":university", {}]
+  }
+}, {
+  "from": "script/:file", 
+  "to": "../../../_utils/script/:file"
+}]

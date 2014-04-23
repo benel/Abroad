@@ -1,0 +1,47 @@
+<html>
+<head>
+  <script src="../script/jquery.js"></script>
+</head>
+<body>
+  <h1>{{university}}</h1>
+  <form>
+    {{#courses}}
+    <p>
+      <input type="checkbox" value="{{code}}"
+        data-equivalence="{{equivalence}}" 
+      />
+      {{code}} ({{equivalence}}, {{count}})
+    </p>
+    {{/courses}}
+    <button type="button">Créer une convention d'étude</button>
+  </form>
+  <script type="text/javascript">
+
+  $("button").on("click", create);
+
+  function create() {
+    var data = {
+      host_institution: "{{university}}",
+      courses: []
+    };
+    $(":checked").each(function() {
+      data.courses.push({
+        id: $(this).val(),
+        equivalence: $(this).data("equivalence")
+      });
+    });
+    $.ajax({
+     type: "POST",
+     url: "..",
+     contentType: "application/json",
+     data: JSON.stringify(data),
+     dataType: "json",
+     success: function(data) {
+       alert(data.id + " créé !");
+     }
+    });
+  }
+
+  </script>
+</body>
+</html>

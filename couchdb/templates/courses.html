@@ -1,47 +1,13 @@
 <html>
-<head>
-  <script src="../script/jquery.js"></script>
-</head>
 <body>
-  <h1>{{university}}</h1>
-  <form>
+  <h1><a href="..">Départs à l'étranger</a> > {{university}}</h1>
+  <table>
+    <tr><th>Code</th><th>Équivalence</th><th>Validations</th></tr>
     {{#courses}}
-    <p>
-      <input type="checkbox" value="{{code}}"
-        data-equivalence="{{equivalence}}" 
-      />
-      {{code}} ({{equivalence}}, {{count}})
-    </p>
+    <tr>
+      <td>{{code}}</td><td>{{equivalence}}</td><td>{{count}}</td>
+    <tr>
     {{/courses}}
-    <button type="button">Créer une convention d'étude</button>
-  </form>
-  <script type="text/javascript">
-
-  $("button").on("click", create);
-
-  function create() {
-    var data = {
-      host_institution: "{{university}}",
-      courses: []
-    };
-    $(":checked").each(function() {
-      data.courses.push({
-        id: $(this).val(),
-        equivalence: $(this).data("equivalence")
-      });
-    });
-    $.ajax({
-     type: "POST",
-     url: "..",
-     contentType: "application/json",
-     data: JSON.stringify(data),
-     dataType: "json",
-     success: function(data) {
-       alert(data.id + " créé !");
-     }
-    });
-  }
-
-  </script>
+  </table>
 </body>
 </html>

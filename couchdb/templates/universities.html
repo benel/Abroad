@@ -1,22 +1,22 @@
 <html>
   <body>
-    <h1>Départs à l'étranger</h1>
-    <img src="http://maps.google.com/maps/api/staticmap?center=33,0&zoom=1&size=480x300&sensor=false{{#universities}}&markers=label:{{order}}|{{name}}{{/universities}}"/>
-    <p>Universités (nombre de CS et TM validées en
+    <h1><a href="..">Départs à l'étranger</a> > Cours validés</h1>
+    <div>en
       <select id="curriculum">
         <option value="">tout</option>
-      </select>) :
-    </p>
+      </select>
+    </div>
+    <img src="http://maps.google.com/maps/api/staticmap?center=33,0&zoom=1&size=480x300&sensor=false{{#universities}}&markers=label:{{order}}|{{name}}{{/universities}}"/>
     <ol>
     {{#universities}}
-      <li><a href="universities/{{name}}">{{name}}</a> ({{count}})</li>
+      <li><a href="./{{name}}">{{name}}</a> ({{count}})</li>
     {{/universities}}
     </ol>
   </body>
-  <script src="script/jquery.js"></script>
+  <script src="../script/jquery.js"></script>
   <script>
     $.ajax({
-      url: 'curricula',
+      url: '../curricula',
       type: 'GET',
       dataType: 'json',
       success: function(result) {
@@ -29,7 +29,7 @@
     });
     $('#curriculum').on('change', function() {
       var filter = $(this).val();
-      self.location = (filter!=='')? '?curriculum='+filter : '.';
+      self.location = (filter!=='')? './?curriculum='+filter : '.';
     });
   </script>
 </html>

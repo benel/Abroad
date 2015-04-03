@@ -1,12 +1,7 @@
 [{
   "from": "",
   "method": "GET",
-  "to": "_list/universities/choose_university",
-  "query": {
-    "group": "true",
-    "startkey": [":curriculum"],
-    "endkey": [":curriculum", {}]
-  }
+  "to":  "index.html"
 }, {
   "from": "",
   "method": "POST",
@@ -19,10 +14,19 @@
     "startkey": ["A"]
   }
 }, {
+  "from": "courses/",
+  "method": "GET",
+  "to": "_list/universities/choose_university",
+  "query": {
+    "group": "true",
+    "startkey": [":curriculum"],
+    "endkey": [":curriculum", {}]
+  }
+}, {
   "from": ":agreement",
   "to":  "../../:agreement"
 }, {
-  "from": "universities/:university",
+  "from": "courses/:university",
   "method": "GET",
   "to": "_list/courses/choose_course",
   "query": {

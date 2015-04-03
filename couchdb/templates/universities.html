@@ -2,11 +2,34 @@
   <body>
     <h1>Départs à l'étranger</h1>
     <img src="http://maps.google.com/maps/api/staticmap?center=33,0&zoom=1&size=480x300&sensor=false{{#universities}}&markers=label:{{order}}|{{name}}{{/universities}}"/>
-    <p>Universités (nombre d'UV validées en {{curriculum}}) :</p>
+    <p>Universités (nombre de CS et TM validées en
+      <select id="curriculum">
+        <option value="">tout</option>
+      </select>) :
+    </p>
     <ol>
     {{#universities}}
       <li><a href="universities/{{name}}">{{name}}</a> ({{count}})</li>
     {{/universities}}
     </ol>
   </body>
+  <script src="script/jquery.js"></script>
+  <script>
+    $.ajax({
+      url: 'curricula',
+      type: 'GET',
+      dataType: 'json',
+      success: function(result) {
+        $.each(result.rows, function(i, o) {
+          var key = o.key[0];
+          $('#curriculum').append('<option value="'+key+'">'+key+'</option>');
+        });
+        $('#curriculum').val('{{curriculum}}');
+      }
+    });
+    $('#curriculum').on('change', function() {
+      var filter = $(this).val();
+      self.location = (filter!=='')? '?curriculum='+filter : '.';
+    });
+  </script>
 </html>

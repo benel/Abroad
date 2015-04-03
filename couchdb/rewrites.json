@@ -12,6 +12,13 @@
   "method": "POST",
   "to":  "../../"
 }, {
+  "from": "curricula",
+  "to":  "_view/choose_university",
+  "query": {
+    "group_level": "1",
+    "startkey": ["A"]
+  }
+}, {
   "from": ":agreement",
   "to":  "../../:agreement"
 }, {

@@ -10,7 +10,8 @@ function(head, req) {
     data.courses.push({
       equivalence: row.key[1],
       code: row.key[2],
-      count: row.value
+      name: row.value.name,
+      count: row.value.count
     });
   }
   return Mustache.to_html(templates.courses, data);

@@ -1,0 +1,17 @@
+<html>
+<body>
+  <h1><a href="..">Départs à l'étranger</a> > <a href="../agreements/">Conventions d'études</a> > {{student_firstname}} {{student_surname}}</h1>
+  <div>
+    <div>{{student_firstname}} {{student_surname}}</div>
+    <div>{{semester}} {{academic_year}}</div>
+    <div>{{study_field}}</div>
+    <div>{{host_institution}} {{host_country}}</div>
+    <table>
+      <tr><th>Code</th><th>Intitulé</th><th>Équivalence</th></tr>
+      {{#courses}}
+        <tr><td>{{id}}</td><td>{{name}}</td><td>{{equivalence}}</td></tr>
+      {{/courses}}
+    </table>
+  </div>
+</body>
+</html>

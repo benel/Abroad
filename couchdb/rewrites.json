@@ -32,6 +32,9 @@
     "startkey": [":curriculum", {}]
   }
 }, {
+  "from": "agreements/:agreement",
+  "to":  "_show/agreement/:agreement"
+}, {
   "from": ":agreement",
   "to":  "../../:agreement"
 }, {

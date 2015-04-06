@@ -5,11 +5,11 @@
     {{#semesters}}
       <h2>{{semester}} {{academic_year}}</h2>
       <table>
-        <tr><th>Nom</th><th>Prénom</th><th>Formation</th><th>Université d'accueil</th>
+        <tr><th>Étudiant</th><th>Formation</th><th>Université d'accueil</th>
         {{#agreements}}
         <tr>
-          <td>{{student_surname}}</td><td>{{student_firstname}}</td><td>{{study_field}}</td><td>{{host_institution}}</td>
-        <tr>
+          <td><a href="{{_id}}">{{student_firstname}} <b>{{student_surname}}</b></a></td><td>{{study_field}}</td><td>{{host_institution}}</td>
+        </tr>
         {{/agreements}}
       </table>
     {{/semesters}}

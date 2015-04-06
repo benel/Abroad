@@ -1,6 +1,5 @@
 function(head, req) {
-  // !json templates.universities
-  // !code lib/mustache.js
+  var Mustache = require("lib/mustache");
   start({"headers":{"Content-Type":"text/html;charset=utf-8"}});
   var data = {
     curriculum: req.query.curriculum,
@@ -14,5 +13,5 @@ function(head, req) {
       count: row.value
     });
   }
-  return Mustache.to_html(templates.universities, data);
+  return Mustache.to_html(this.templates.universities, data, this.templates.partials);
 }

@@ -23,6 +23,15 @@
     "endkey": [":curriculum", {}]
   }
 }, {
+  "from": "agreements/",
+  "to": "_list/agreements/check_agreement",
+  "query": {
+    "descending": "true",
+    "include_docs": "true",
+    "endkey": [":curriculum"],
+    "startkey": [":curriculum", {}]
+  }
+}, {
   "from": ":agreement",
   "to":  "../../:agreement"
 }, {

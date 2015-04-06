@@ -1,0 +1,17 @@
+<html>
+  <body>
+    <h1><a href="..">Départs à l'étranger</a> > Conventions d'études</h1>
+    {{>filter}}
+    {{#semesters}}
+      <h2>{{semester}} {{academic_year}}</h2>
+      <table>
+        <tr><th>Nom</th><th>Prénom</th><th>Formation</th><th>Université d'accueil</th>
+        {{#agreements}}
+        <tr>
+          <td>{{student_surname}}</td><td>{{student_firstname}}</td><td>{{study_field}}</td><td>{{host_institution}}</td>
+        <tr>
+        {{/agreements}}
+      </table>
+    {{/semesters}}
+  </body>
+</html>

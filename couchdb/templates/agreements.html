@@ -13,5 +13,21 @@
         {{/agreements}}
       </table>
     {{/semesters}}
+    <button type="button">Créer</button>
   </body>
+  <script src="../script/jquery.js"></script>
+  <script>
+    $('button').on('click', function() {
+      $.ajax({
+        type: 'POST',
+        url: '..',
+        data: '{"courses":[{},{},{},{},{}]}',
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function(data) {
+          self.location = data.id;
+        }
+      });
+    });
+  </script>
 </html>

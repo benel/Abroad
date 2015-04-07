@@ -1,17 +1,87 @@
 <html>
 <body>
   <h1><a href="..">Départs à l'étranger</a> > <a href="../agreements/">Conventions d'études</a> > {{student_firstname}} {{student_surname}}</h1>
-  <div>
-    <div>{{student_firstname}} {{student_surname}}</div>
-    <div>{{semester}} {{academic_year}}</div>
-    <div>{{study_field}}</div>
-    <div>{{host_institution}} {{host_country}}</div>
+  <form>
+    <div>
+      <label>Prénom
+        <input name="student_firstname" value="{{student_firstname}}" />
+      </label>
+      <label>Nom
+        <input name="student_surname" value="{{student_surname}}" />
+      </label>
+      <label>Formation
+        <input name="study_field" value="{{study_field}}" />
+      </label>
+    </div>
+    <div>
+      <label>Semestre
+        <input name="semester" value="{{semester}}" />
+      </label>
+      <label>Année universitaire
+        <input name="academic_year" value="{{academic_year}}" />
+      </label>
+    </div>
+    <div>
+      <label>Université d'accueil
+        <input name="host_institution" value="{{host_institution}}" />
+      </label>
+      <label>Pays
+        <input name="host_country" value="{{host_country}}" />
+      </label>
+    </div>
     <table>
       <tr><th>Code</th><th>Intitulé</th><th>Équivalence</th></tr>
       {{#courses}}
-        <tr><td>{{id}}</td><td>{{name}}</td><td>{{equivalence}}</td></tr>
+        <tr>
+          <td>
+            <input name="id" value="{{id}}" size="10" />
+          </td>
+          <td>
+            <input name="name" value="{{name}}" size="40" />
+          </td>
+          <td>
+            <input name="equivalence" value="{{equivalence}}" size="10" />
+          </td>
+        </tr>
       {{/courses}}
     </table>
-  </div>
+    <button type="button">Enregistrer</button>
+    <span id="status" />
+  </form>
 </body>
+<script src="../script/jquery.js"></script>
+<script>
+  var rev = '{{_rev}}';
+  $('button').on('click', function() {
+    var data = {
+      '_rev': rev,
+      courses: []
+    };
+    $('form').serializeArray().forEach(function(o) {
+      switch (o.name) {
+        case 'id':
+          data.courses.push({});
+        case 'name':
+        case 'equivalence':
+          data.courses[data.courses.length-1][o.name] = o.value;
+          break;
+        default:
+          data[o.name] = o.value;
+      }
+    });
+    $.ajax({
+      type: 'PUT',
+      url: '../{{_id}}',
+      contentType: 'application/json',
+      data: JSON.stringify(data),
+      dataType: 'json',
+      complete: function(response) {
+        $('#status').text(response.statusText).fadeIn().fadeOut();
+      },
+      success: function(data) {
+        rev = data.rev;
+      }
+    });
+  });
+</script>
 </html>

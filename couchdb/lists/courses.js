@@ -8,8 +8,9 @@ function(head, req) {
   };
   while (row = getRow()) {
     data.courses.push({
-      equivalence: row.key[1],
-      code: row.key[2],
+      field: row.key[1],
+      type: row.key[2],
+      code: row.key[3],
       name: row.value.name,
       count: row.value.count
     });

@@ -27,7 +27,7 @@
       </label>
     </div>
     <table>
-      <tr><th>Code</th><th>Intitulé</th><th>Équivalence</th></tr>
+      <tr><th>Code</th><th>Intitulé</th><th>Type</th><th>Formation</th><th>Commentaire</th></tr>
       {{#courses}}
         <tr>
           <td>
@@ -37,7 +37,13 @@
             <input name="name" value="{{name}}" size="40" />
           </td>
           <td>
-            <input name="equivalence" value="{{equivalence}}" size="10" />
+            <input name="type" value="{{type}}" size="10" />
+          </td>
+          <td>
+            <input name="field" value="{{field}}" size="10" />
+          </td>
+          <td>
+            <input name="comment" value="{{comment}}" size="40" />
           </td>
         </tr>
       {{/courses}}
@@ -59,7 +65,9 @@
         case 'id':
           data.courses.push({});
         case 'name':
-        case 'equivalence':
+        case 'type':
+        case 'field':
+        case 'comment':
           data.courses[data.courses.length-1][o.name] = o.value;
           break;
         default:

@@ -3,7 +3,7 @@
     <h1><a href="..">Départs à l'étranger</a> > Cours validés</h1>
     {{>filter}}
     <img src="http://maps.google.com/maps/api/staticmap?center=33,0&zoom=1&size=480x300&sensor=false{{#universities}}&markers=label:{{order}}|{{name}}{{/universities}}"/>
-    <ol>
+    <ol type="A">
     {{#universities}}
       <li><a href="./{{name}}">{{name}}</a> ({{count}})</li>
     {{/universities}}

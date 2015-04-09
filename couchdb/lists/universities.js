@@ -8,7 +8,7 @@ function(head, req) {
   var i = 0;
   while (row = getRow()) {
     data.universities.push({
-      order: ++i,
+      order: String.fromCharCode(++i + 64),
       name: row.key[1],
       count: row.value
     });

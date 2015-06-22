@@ -1,13 +1,29 @@
 <html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.22.1/css/theme.default.min.css" />
+</head>
 <body>
   <h1><a href="..">Départs à l'étranger</a> > <a href="../courses/">Cours validés</a> > {{university}}</h1>
   <table>
-    <tr><th>Code</th><th>Intitulé</th><th>Semestre</th><th>Équivalence</th><th>Validations</th></tr>
+    <thead>
+      <tr>
+        <th>Code</th><th>Intitulé</th><th>Semestre</th><th>Équivalence</th><th>Validations</th>
+      </tr>
+    </thead>
+    <tbody>
     {{#courses}}
-    <tr>
-      <td>{{code}}</td><td>{{name}}</td><td>{{semester}}</td><td>{{type}} {{field}}</td><td>{{count}}</td>
-    <tr>
+      <tr>
+        <td>{{code}}</td><td>{{name}}</td><td>{{semester}}</td><td>{{type}} {{field}}</td><td>{{count}}</td>
+      </tr>
     {{/courses}}
+    </tbody>
   </table>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.22.1/js/jquery.tablesorter.min.js"></script>
+<script>
+
+  $('table').tablesorter();
+
+</script>
 </html>

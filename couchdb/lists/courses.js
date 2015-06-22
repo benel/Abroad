@@ -8,9 +8,10 @@ function(head, req) {
   };
   while (row = getRow()) {
     data.courses.push({
-      field: row.key[1],
-      type: row.key[2],
-      code: row.key[3],
+      semester: row.key[1],
+      field: row.key[2],
+      type: row.key[3],
+      code: row.key[4],
       name: row.value.name,
       count: row.value.count
     });

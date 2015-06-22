@@ -2,10 +2,10 @@
 <body>
   <h1><a href="..">Départs à l'étranger</a> > <a href="../courses/">Cours validés</a> > {{university}}</h1>
   <table>
-    <tr><th>Code</th><th>Intitulé</th><th>Équivalence</th><th>Validations</th></tr>
+    <tr><th>Code</th><th>Intitulé</th><th>Semestre</th><th>Équivalence</th><th>Validations</th></tr>
     {{#courses}}
     <tr>
-      <td>{{code}}</td><td>{{name}}</td><td>{{type}} {{field}}</td><td>{{count}}</td>
+      <td>{{code}}</td><td>{{name}}</td><td>{{semester}}</td><td>{{type}} {{field}}</td><td>{{count}}</td>
     <tr>
     {{/courses}}
   </table>
